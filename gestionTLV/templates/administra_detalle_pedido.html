@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container" id="contenidoTabla">
+    <br>
+    <h3>Detalle de pedidos</h3>
+    <br>     
+    <table class="table-secondary table-bordered border-primary bg-body-secondary">
+        <thead>
+          <tr >
+            <th scope="col">Id-pedido</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Fecha compra</th>
+            <th scope="col">Estado pedido</th>
+            <th scope="col">Id-producto</th>
+            <th scope="col">Nombre producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Existencia</th>
+            <th scope="col">Precio producto</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+     
+        {% for d in detalle_pedido %} 
+        <tbody style="text-align: center;">                                                                      
+            <tr>
+              <td>{{d.id_pedido.id_pedido}}</td>
+              <td>{{d.id_pedido.id_cliente.nombre_cliente}}<spam> {{d.id_pedido.id_cliente.apellidos_cliente}}</spam></td>
+              <td>{{d.id_pedido.id_cliente.direccion_cliente}}<spam> {{d.id_pedido.id_cliente.comuna_cliente}}</spam></td>
+              <td>{{d.id_pedido.id_cliente.telefono_cliente}}</td>
+              <td>{{d.id_pedido.fecha_pedido}}</td>
+              
+              {% if d.id_pedido.estado_pedido == '1' %}
+                  <td><small>Pendiente</small></td>
+                    {% elif d.id_pedido.estado_pedido == '2' %}
+                      <td><small>En preparación</small></td>
+                    {% elif d.id_pedido.estado_pedido == '3' %}
+                      <td><small>En despacho</small></td>
+                      {% else %}
+                        <td><small>Entregado</small></td>
+              {% endif %}
+
+              <td>{{d.id_producto.id_producto}}</td>
+              <td>{{d.id_producto.nombre_producto}}</td>
+              <td>{{d.cantidad_pedido}}</td>
+
+              {% if d.id_producto.stock_producto >= d.cantidad_pedido %}
+                <td>{{d.id_producto.stock_producto}}</td>
+                <td>{{d.id_producto.precio_producto}}</td>
+                {% else %}
+                  <td>Sin stock</td>
+                  <td>{{d.id_producto.precio_producto}}</td>
+                  <td>  ------  </td>
+              {% endif %}
+             
+              <td> <a name="" id="d.id_pedido" class="btn btn-info btn-lg active btn-sm" href="{% url 'modifica_detalle' d.id_pedido.id_pedido  %}" role="button" type="button">Editar</a></td>
+              <td> <a name="" id="d.id_pedido" class="btn btn-danger btn-lg active btn-sm" href="{% url 'elimina_detalle' d.id_pedido.id_pedido  %}" role="button" type="button">Eliminar</a></td>                                            
+        </tbody>
+        {% endfor %}    
+        <h4 class="total-pedido">Total pedido: ${{ptotal}}</h4>  
+    </table>        
+  </div>
+{% endblock %}

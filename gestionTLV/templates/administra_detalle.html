@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container" id="contenidoTabla">
+    <br>
+    <h3>Detalle de pedidos</h3>
+    <br>     
+    <table class="table-secondary table-bordered border-primary bg-white">
+        <thead>
+          <tr >
+            <th scope="col">Id-pedido</th>
+            <th scope="col">Id-producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Existencia</th>
+            <th scope="col">Precio producto</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Listar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        {% for d in detalle %}    
+        <tbody class="detalle">                                                                      
+            <tr>
+              <td>{{d.id_pedido}}</td>
+              <td>{{d.id_producto}}</td>
+              <td style="text-align: center;">{{d.cantidad_pedido}}</td>
+
+              {% if d.id_producto.stock_producto >= d.cantidad_pedido %}
+                <td style="text-align: center;">{{d.id_producto.stock_producto}}</td>
+                <td style="text-align: center;">{{d.id_producto.precio_producto}}</td>
+                
+                {% else %}
+                  <td style="text-align: center;">Sin stock</td>
+                  <td style="text-align: center;">{{d.id_producto.precio_producto}}</td>
+                  <td style="text-align: center;"> ------ </td>
+              {% endif %}
+            
+              <td> <a name="" id="d.id_pedido" class="btn btn-info btn-lg active btn-sm" href="{% url 'modifica_detalle' d.id_pedido.id_pedido  %}" role="button" type="button">Editar</a></td>
+              <td> <a name="" id="d.id_pedido" class="btn btn-primary btn-lg active btn-sm" href="{% url 'administra_detalle_pedido' d.id_pedido.id_pedido %}" role="button" type="button">Listar Pedido</a></td>
+              <td> <a name="" id="d.id_pedido" class="btn btn-danger btn-lg active btn-sm" href="{% url 'elimina_detalle' d.id_pedido.id_pedido  %}" role="button" type="button">Eliminar</a></td>                                            
+        </tbody>        
+        {% endfor %}      
+    </table>        
+  </div>
+{% endblock %}

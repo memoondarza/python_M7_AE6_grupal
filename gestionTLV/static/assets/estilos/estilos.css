@@ -1,0 +1,129 @@
+
+body{
+    background-color: #f8f9fa;
+    font-family: 'Ubuntu', sans-serif;
+    padding-top: 50px;
+}
+.jumbotrom{
+    background-color: #f8f9fa;
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: italic;
+    position: relative;
+}
+.jumbotrom:hover{
+    transform: translateY(-7%);
+    transition:.3s ease-in-out ;
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: lightcyan;
+}
+#titulo{
+    text-align: center;
+}
+.card{
+    float: left;
+    box-shadow: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    height:5rem ;
+}
+/* para modificar los formularios que vienen por defecto en django */
+
+form {
+    max-width: 400px; /* Limitar el ancho máximo del formulario */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    padding: 20px; /* Agregar un poco de espacio interno */
+
+  }
+  
+  /* Cambiar el tamaño de los campos de texto */
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    width: 100%; /* El ancho de los campos será igual al 100% del contenedor */
+    padding: 10px; /* Espacio interno para los campos de texto */
+    margin-bottom: 10px; /* Margen inferior para separar los campos */
+  }
+  
+  /* Estilos adicionales para el botón */
+  form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Cambiar el tamaño de las etiquetas de los campos (opcional) */
+  form label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+footer{
+    background-color:  #f8f9fa;
+    bottom: 0;
+    width: 100%;
+   
+}
+.img-fluid{
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+.img-fluid:hover{
+    transform: scale(1.3);
+}
+.seccion{
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+.contacto{
+    width: 50%;
+    margin: 0 auto;
+}
+.text-black{
+    text-align: center!important;
+}
+.btn-custom {
+    background-color: #FFA500; /* Color naranja personalizado */
+    color: #ffffff; /* Texto en color blanco */
+    border-radius: 20px; /* Borde redondeado */
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.item {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.item img {
+    max-width: 18rem;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#contenidoTabla {
+    font-size: 14px;
+}
+
+td {
+    font-size: 12px;
+}
+
+th {
+    font-size: 12px;
+}
+.total-pedido {
+    text-align: right;
+    color: rgb(226, 59, 59)
+}

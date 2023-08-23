@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" >
+      <br>
+      <h3>Formulario de contacto</h3>
+      <br>     
+      <form action="/contactar/"  method="POST">
+        {% csrf_token %}
+        <p>Asunto: <input type="text" name="txtAsunto"/></p>
+        <p>Email: <input type="email" name="txtEmail"/></p>
+        <p>Mensaje: <textarea name="txtMensaje" cols="30" rows="5"></textarea></p>      
+        <br>
+        <imput type="submit" id="btnEnviar" class="button" value="Enviar correo">   
+      </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" id="contenidoTabla">
+      <br>
+      <h3>Administración de Productos</h3>
+      <br>     
+      <table class="table-secondary table-bordered border-primary bg-white">
+          <thead>
+            <tr >
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Unidad</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          {% for p in productos %}    
+          <tbody class="productos">                                                                      
+              <tr>
+                <td><small>{{p.id_producto}}</small></td>
+                <td><small>{{p.nombre_producto}}</small></td>
+                <td><small>{{p.marca_producto}}</small></td>
+                <td><small>{{p.unidad_producto}}</small></td>
+                {% if p.categoria_producto == '1' %}
+                    <td><small>Zapatillas deportivas</small></td>
+                  {% elif p.categoria_producto == '2' %}
+                    <td><small>Zapatillas urbanas</small></td>
+                  {% elif p.categoria_producto == '3' %}
+                    <td><small>Ropa deportiva</small></td>
+                  {% elif p.categoria_producto == '4' %}
+                    <td><small>Implementos deportivos</small></td>
+                  {% elif p.categoria_producto == '5' %}
+                    <td><small>Máquinas de ejercicios</small></td>
+                    {% else %}
+                    <td><small>Otras categorías</small></td>
+                {% endif %}
+                <td><small>{{p.stock_producto}}</small></td>
+                <td><small>{{p.precio_producto}}</small></td>
+
+                <td> <a name="" id="{p.id_producto}" class="btn btn-info btn-lg active btn-sm" href="{% url 'modifica_productos' p.id_producto %}" role="button" type="button">Editar</a></td>
+                <td> <a name="" id="{p.id_producto}" class="btn btn-danger btn-lg active btn-sm" href="{% url 'elimina_productos' p.id_producto %}" role="button" type="button">Eliminar</a></td>                                            
+          </tbody>
+          {% endfor %}      
+      </table>        
+    </div>
+{% endblock %}

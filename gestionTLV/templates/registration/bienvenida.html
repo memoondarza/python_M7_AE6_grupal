@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main class="container">
+    <div class="p-2 text-center bg-image">  
+      <br>
+        <div class="d-flex justify-content-center align-items-center h-100">
+         
+          <div class="text-black">
+            <h1 class="mb-3" style="color:#FF0000;">Bienvenido(a) {{users}} !!!!!!!</h1>
+            <h3 class="mb-3" style="color:#7b3dee;">Toda una tienda deportiva a su servicio</h3>
+                <img src="{% static 'assets/imagenes/foto_inicio.png' %}">
+          </div>
+      </div>
+    </div>
+    </main>
+{% endblock %}

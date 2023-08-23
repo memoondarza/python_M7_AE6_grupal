@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+      <h3>Actualización de pedidos</h3>
+      <form action=""  method="POST"> 
+          {% csrf_token %}
+          {{ form | crispy }}    
+        <br>
+        <button type="submit" id="btnEnviar" class="button">Actualizar</button>       
+      </form>
+      <h3 class="mb-3" style="color:#FF0000;">{{ mensaje }}</h3>
+    </div>
+{% endblock %}

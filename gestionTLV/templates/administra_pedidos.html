@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" id="contenidoTabla">
+      <br>
+      <h3>Administración de pedidos</h3>
+      <br>     
+      <table class="table-secondary table-bordered border-primary bg-white">
+          <thead>
+            <tr >
+              <th scope="col">Id pedido</th>
+              <th scope="col">Id cliente</th>
+              <th scope="col">Fecha pedido</th>
+              <th scope="col">Fecha entrega</th>
+              <th scope="col">Estado </th>
+              <th scope="col">Forma de pago</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+              <th scope="col"><small>Cambia Estado</small></th>
+              <th scope="col"><small>Cambia Estado</small></th>
+              <th scope="col"><small>Cambia Estado</small></th>
+              <th scope="col"><small>Cambia Estado</small></th>
+            </tr>
+          </thead>
+          {% for p in pedidos %}    
+          <tbody class="pedidos">                                                                      
+              <tr>
+                <td><small>{{p.id_pedido}}</small></td>
+                <td><small>{{p.id_cliente}}</small></td>
+                <td><small>{{p.fecha_pedido}}</small></td>
+                <td><small>{{p.fecha_entrega}}</small></td>
+                 {% if p.estado_pedido == '1' %}
+                    <td><small>Pendiente</small></td>
+                      {% elif p.estado_pedido == '2' %}
+                        <td><small>En preparación</small></td>
+                      {% elif p.estado_pedido == '3' %}
+                        <td><small>En despacho</small></td>
+                        {% else %}
+                         <td><small>Entregado</small></td>
+                   {% endif %}
+                
+                  {% if p.forma_pago == '1' %}
+                  <td><small>Contado, T.Debito</small></td>
+                    {% elif p.forma_pago == '2' %}
+                      <td><small>Por T.Crédito 1 cuota</small></td>
+                    {% elif p.forma_pago == '3' %}
+                      <td><small>Por T.Crédito 3 cuotas</small></td>
+                    {% elif p.forma_pago == '4' %}
+                      <td><small>Por T.Crédito 6 cuotas</small></td>
+                    {% elif p.forma_pago == '5' %}
+                      <td><small>Por T.Crédito 12 cuotas</small></td>
+                      {% else %}
+                        <td><small>Por T.Crédito 24 cuotas</small></td>
+                  {% endif %}
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-info btn-lg active btn-sm" href="{% url 'modifica_pedidos' p.id_pedido %}" role="button" type="button">Editar</a></td>
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-danger btn-lg active btn-sm" href="{% url 'elimina_pedidos' p.id_pedido %}" role="button" type="button">Eliminar</a></td> 
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-success btn-lg active btn-sm" href="{% url 'cambiaEstado_pedidos1' p.id_pedido %}" role="button" type="button">pendiente</a>        
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-success btn-lg active btn-sm" href="{% url 'cambiaEstado_pedidos2' p.id_pedido %}" role="button" type="button">preparación</a>
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-success btn-lg active btn-sm" href="{% url 'cambiaEstado_pedidos3' p.id_pedido %}" role="button" type="button">despacho</a>
+                <td> <a name="" id="{p.id_pedido}" class="btn btn-success btn-lg active btn-sm" href="{% url 'cambiaEstado_pedidos4' p.id_pedido %}" role="button" type="button">entregado</a>
+                                                                                                      
+          </tbody>
+          {% endfor %}      
+      </table>        
+    </div>
+{% endblock %}
